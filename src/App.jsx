@@ -1,35 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import React from 'react';
 
+function Sidebar() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{
+      width: '250px',
+      height: '100vh',
+      background: '#454',
+      color: 'white',
+      padding: '20px',
+      position: 'fixed',
+      left: 0,
+      top: 0,
+    }}>
+      <h2>Menu</h2>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        <li style={{ marginBottom: '10px' }}>Dashboard</li>
+        <li style={{ marginBottom: '10px' }}>Configurações</li>
+        <li style={{ marginBottom: '10px' }}>Notificações</li>
+        <li style={{ marginBottom: '10px' }}>Ajuda</li>
+        <li>Sair</li>
+      </ul>
+    </div>
+  );
 }
 
-export default App
+function InfoBoxes() {
+  return (
+    <div style={{
+      marginLeft: '270px', // Empurra para o lado da sidebar
+      padding: '20px',
+      display: 'flex',
+      gap: '20px'
+    }}>
+      <div style={{
+        padding: '15px',
+        background: '#333',
+        borderRadius: '5px',
+        color: 'white',
+        width: '350px'
+      }}>
+        <h3>Informações</h3>
+        <p>Última atualização: Hoje</p>
+        <p>Status do sistema: Online</p>
+      </div>
+
+      <div style={{
+        padding: '15px',
+        background: '#444',
+        borderRadius: '5px',
+        color: 'white',
+        width: '350px'
+      }}>
+        <h3>Ajuda rápida</h3>
+        <p>Precisa de suporte? Entre em contato!</p>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <Sidebar />
+      <InfoBoxes />
+    </div>
+  );
+}
+
+export default App;
