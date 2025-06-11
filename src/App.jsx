@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 function Sidebar() {
@@ -13,48 +12,51 @@ function Sidebar() {
       left: 0,
       top: 0,
     }}>
-      <h2>Menu</h2>
+      <h2>Gustavo Sales Alves</h2>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        <li style={{ marginBottom: '10px' }}>Dashboard</li>
-        <li style={{ marginBottom: '10px' }}>Configurações</li>
-        <li style={{ marginBottom: '10px' }}>Notificações</li>
-        <li style={{ marginBottom: '10px' }}>Ajuda</li>
-        <li>Sair</li>
+        <li style={{ marginBottom: '10px' }}>email: </li>
+        <li style={{ marginBottom: '10px' }}>numero:</li>
+        <li style={{ marginBottom: '10px' }}></li>
       </ul>
     </div>
   );
 }
 
-function InfoBoxes() {
+export default App;
+
+function InfoBox1() {
   return (
     <div style={{
-      marginLeft: '270px', // Empurra para o lado da sidebar
-      padding: '20px',
-      display: 'flex',
-      gap: '20px'
+      position: 'absolute',
+      top: '150px',
+      left: '300px',
+      padding: '15px',
+      background: '#333',
+      borderRadius: '5px',
+      color: 'white',
+      width: '350px'
     }}>
-      <div style={{
-        padding: '15px',
-        background: '#333',
-        borderRadius: '5px',
-        color: 'white',
-        width: '350px'
-      }}>
-        <h3>Informações</h3>
-        <p>Última atualização: Hoje</p>
-        <p>Status do sistema: Online</p>
-      </div>
+      <h3>Informações sobre mim</h3>
+      <p>Nome: Gustavo Sales Alves</p>
+      <p>Profissão: Desenvolvedor </p>
+    </div>
+  );
+}
 
-      <div style={{
-        padding: '15px',
-        background: '#444',
-        borderRadius: '5px',
-        color: 'white',
-        width: '350px'
-      }}>
-        <h3>Ajuda rápida</h3>
-        <p>Precisa de suporte? Entre em contato!</p>
-      </div>
+function InfoBox2() {
+  return (
+    <div style={{
+      position: 'absolute',
+      top: '350px',
+      left: '300px',
+      padding: '15px',
+      background: '#444',
+      borderRadius: '5px',
+      color: 'white',
+      width: '350px'
+    }}>
+      <h3>stecks</h3>
+      <p>React, Node.js, TypeScript, etc.</p>
     </div>
   );
 }
@@ -63,9 +65,8 @@ function App() {
   return (
     <div>
       <Sidebar />
-      <InfoBoxes />
+      <InfoBox1 />
+      <InfoBox2 />
     </div>
   );
 }
-
-export default App;
