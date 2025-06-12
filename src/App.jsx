@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Sidebar() {
+function Sidebar({ onSelect }) {
+  const itemStyle = { marginBottom: '10px', cursor: 'pointer' };
+
   return (
     <div style={{
       width: '250px',
@@ -12,61 +14,79 @@ function Sidebar() {
       left: 0,
       top: 0,
     }}>
-      <h2>Gustavo Sales Alves</h2>
+      <h2>Menu</h2>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        <li style={{ marginBottom: '10px' }}>email: </li>
-        <li style={{ marginBottom: '10px' }}>numero:</li>
-        <li style={{ marginBottom: '10px' }}></li>
+        <li onClick={() => onSelect('dashboard')} style={itemStyle}>Informações</li>
+        <li onClick={() => onSelect('config')} style={itemStyle}>Tecnologias</li>
+        <li onClick={() => onSelect('notificacoes')} style={itemStyle}>Abilidades</li>
       </ul>
     </div>
   );
 }
 
-export default App;
+function MainContent({ selected }) {
+  let content;
 
-function InfoBox1() {
-  return (
+  switch (selected) {
+    case 'dashboard':
+      content = (
+        <>
+          <h3>Informações sobre mim</h3>
+          <p>Nome: gustavo Dev</p>
+          <p>email: </p>
+          <p>numero: (19)99919-7431</p>
+        
+          <p>Profissão: Desenvolvedor</p>
+        </>
+      );
+      break;
+    case 'config':
+      content = (
+        <>
+          <h3>Tecnologias</h3>
+          <p>React, Node.js, TypeScript, etc.</p>
+        </>
+      );
+      break;
+    case 'notificacoes':
+      content = (
+        <>
+          <h3>abilidades</h3>
+          <p>canva, exel, word</p>
+        </>
+      );
+      break;
+    default:
+      content = <p>Escolha uma opção no menu.</p>;
+  }
+ return (
     <div style={{
-      position: 'absolute',
-      top: '150px',
-      left: '300px',
-      padding: '15px',
-      background: '#333',
-      borderRadius: '5px',
-      color: 'white',
-      width: '350px'
+      marginLeft: '300px',
+      padding: '200px',
     }}>
-      <h3>Informações sobre mim</h3>
-      <p>Nome: Gustavo Sales Alves</p>
-      <p>Profissão: Desenvolvedor </p>
-    </div>
-  );
-}
-
-function InfoBox2() {
-  return (
-    <div style={{
-      position: 'absolute',
-      top: '350px',
-      left: '300px',
-      padding: '15px',
-      background: '#444',
-      borderRadius: '5px',
-      color: 'white',
-      width: '350px'
-    }}>
-      <h3>stecks</h3>
-      <p>React, Node.js, TypeScript, etc.</p>
+      <div style={{
+        padding: '20px',
+        background: '#333',
+        color: 'white',
+        borderRadius: '8px',
+        boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+        width: '500px'
+      }}>
+        {content}
+      </div>
     </div>
   );
 }
 
 function App() {
+  const [selected, setSelected] = useState('dashboard');
+
   return (
     <div>
-      <Sidebar />
-      <InfoBox1 />
-      <InfoBox2 />
+      <Sidebar onSelect={setSelected} />
+      <MainContent selected={selected} />
     </div>
   );
 }
+
+export default App;
