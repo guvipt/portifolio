@@ -1,7 +1,28 @@
 import React, { useState } from 'react';
 
 function Sidebar({ onSelect }) {
-  const itemStyle = { marginBottom: '10px', cursor: 'pointer' };
+  // Estilo base para os itens do menu
+  const itemStyle = {
+    marginBottom: '10px',
+    cursor: 'pointer',
+    border: '1px solid white',
+    borderRadius: '5px',
+    padding: '8px 12px',
+    backgroundColor: 'transparent',
+    transition: 'background-color 0.2s ease'
+  };
+
+  // Componente com hover usando eventos
+  const MenuItem = ({ label, value }) => (
+    <li
+      onClick={() => onSelect(value)}
+      style={itemStyle}
+      onMouseEnter={e => e.currentTarget.style.backgroundColor = '#000'}
+      onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
+    >
+      {label}
+    </li>
+  );
 
   return (
     <div style={{
@@ -14,11 +35,11 @@ function Sidebar({ onSelect }) {
       left: 0,
       top: 0,
     }}>
-      <h2>Menu</h2>
+      <h2>Gustavo Sales Alves</h2>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        <li onClick={() => onSelect('dashboard')} style={itemStyle}>Informações</li>
-        <li onClick={() => onSelect('config')} style={itemStyle}>Tecnologias</li>
-        <li onClick={() => onSelect('notificacoes')} style={itemStyle}>Abilidades</li>
+        <MenuItem label="Informações" value="Informações" />
+        <MenuItem label="Tecnologias" value="Tecnologias" />
+        <MenuItem label="Habilidades" value="Habilidades" />
       </ul>
     </div>
   );
@@ -28,31 +49,30 @@ function MainContent({ selected }) {
   let content;
 
   switch (selected) {
-    case 'dashboard':
+    case 'Informações':
       content = (
         <>
           <h3>Informações sobre mim</h3>
           <p>Nome: gustavo Dev</p>
-          <p>email: </p>
-          <p>numero: (19)99919-7431</p>
-        
+          <p>e-mail: gugasalles.g@email.com</p>
+          <p>número: (19)99919-7431</p>
           <p>Profissão: Desenvolvedor</p>
         </>
       );
       break;
-    case 'config':
+    case 'Tecnologias':
       content = (
         <>
           <h3>Tecnologias</h3>
-          <p>React, Node.js, TypeScript, etc.</p>
+          <p>React, Node.js, TypeScript, Python</p>
         </>
       );
       break;
-    case 'notificacoes':
+    case 'Habilidades':
       content = (
         <>
-          <h3>abilidades</h3>
-          <p>canva, exel, word</p>
+          <h3>Habilidades</h3>
+          <p>Canva, Excel, Word</p>
         </>
       );
       break;
