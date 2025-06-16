@@ -53,10 +53,11 @@ function MainContent({ selected }) {
       content = (
         <>
           <h3>Informações sobre mim</h3>
-          <p>Nome: gustavo Dev</p>
+          <p>Nome: gustavo sales alves</p>
           <p>e-mail: gugasalles.g@email.com</p>
           <p>número: (19)99919-7431</p>
           <p>Profissão: Desenvolvedor</p>
+          <p>capinas, Brazil</p>
         </>
       );
       break;

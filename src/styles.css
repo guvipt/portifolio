@@ -1,0 +1,7 @@
+.logo-container {
+  width: 150px !important;
+  height: 150px !important;
+  background-image: url("/logo.svg");
+  background-size: contain; /* Ajusta o tamanho */
+  background-repeat: no-repeat;
+}
